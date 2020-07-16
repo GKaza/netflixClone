@@ -32,7 +32,6 @@ export default {
     async fetchData() {
       const request = await axios.get(this.fetchUrl);
       this.movies = request.data.results;
-      console.log(request);
       return request;
     }
   },
@@ -47,6 +46,8 @@ export default {
 }
 .row_title {
   line-height: 0px;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .row_posters {
@@ -73,4 +74,14 @@ export default {
 .row_poster:hover {
   max-height: 187px;
 }
+
+/* .test {
+  color: transparent;
+  background: #ffffff86;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 0px 3px 3px rgba(122, 122, 122, 0.39);
+  font-family: 'Permanent Marker', cursive;
+} */
 </style>

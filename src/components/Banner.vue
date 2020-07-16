@@ -49,6 +49,7 @@ export default {
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)
         ];
+      console.log(this.movie);
       return request;
     },
     truncate(str, n) {
@@ -73,15 +74,21 @@ export default {
 .banner_title {
   font-size: 3rem;
   padding-bottom: 0.3rem;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 .banner_rating {
-  padding-left: 12px;
+  padding-left: 13px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
 }
 .banner_description {
   width: 45rem;
   max-width: 500px;
   min-height: 80px;
   padding-top: 1rem;
+  color: rgb(211, 211, 211);
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
 }
 .banner_buttons {
   padding-top: 1rem;

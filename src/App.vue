@@ -56,7 +56,7 @@ export default {
   margin: 0px;
 }
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #eeeeee;
   background-color: #0f0f0f;
 }
