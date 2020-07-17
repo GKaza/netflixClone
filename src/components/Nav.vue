@@ -5,7 +5,7 @@
       alt="Netflix Logo"
       class="nav_logo"
     />
-    <h5 class="nav_home">Home</h5>
+    <h5 class="nav_tab nav_home">Home</h5>
     <h5 class="nav_tab">TV Shows</h5>
     <h5 class="nav_tab">Movies</h5>
     <h5 class="nav_tab">Latest</h5>
@@ -119,7 +119,7 @@ export default {
 }
 .nav_box .account_menu,
 .nav_box i {
-  margin-left: 22px;
+  margin-left: 25px;
   cursor: pointer;
 }
 .nav_box .less_marg {
@@ -133,10 +133,7 @@ export default {
   font-size: 0.9rem;
 }
 .nav_home {
-  margin-left: 20px;
   font-weight: 600;
-  cursor: default;
-  font-size: 0.9rem;
 }
 .nav_tab:hover {
   color: rgb(190, 190, 190);

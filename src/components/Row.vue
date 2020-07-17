@@ -41,7 +41,7 @@ export default {
   mounted: function() {},
   methods: {
     async fetchData() {
-      const request = await axios.get(this.fetchUrl);
+      const request = await axios.get(this.fetchUrl, { port: 9091 });
       this.movies = request.data.results;
       return request;
     },
@@ -50,20 +50,22 @@ export default {
     },
     scrollLeft() {
       let x = document.getElementsByClassName("row_posters")[this.id];
-      x.scrollLeft -= 700;
+      let step = window.outerWidth / 2;
+      x.scrollLeft -= step;
       this.getVal();
     },
     scrollRight() {
       let x = document.getElementsByClassName("row_posters")[this.id];
-      x.scrollLeft += 700;
+      let step = window.outerWidth / 2;
+      x.scrollLeft += step;
       this.getVal();
+      console.log(step);
     },
     getVal() {
       setTimeout(() => {
         let x = document.getElementsByClassName("row_posters")[this.id]
           .scrollLeft;
         this.left_value = x;
-        console.log(this.left_value);
       }, 550);
     }
   },
