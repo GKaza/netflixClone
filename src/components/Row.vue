@@ -2,14 +2,16 @@
   <div class="row">
     <h3 class="row_title">{{title}}</h3>
     <div class="row_posters">
-      <div class="space"></div>
-      <img
-        v-for="movie in movies"
-        :key="movie.id"
-        :src="base_url + movie.backdrop_path"
-        :alt="movie.name"
-        class="row_poster"
-      />
+      <div class="wrap" v-for="movie in movies" :key="movie.id">
+        <img :src="base_url + movie.backdrop_path" :alt="movie.name" class="row_poster" />
+        <h5 class="poster_title" v-if="movie.name">{{movie.name}}</h5>
+        <h5 class="poster_title" v-if="movie.title">{{movie.title}}</h5>
+        <div class="poster_info">
+          <h4 v-if="movie.name">{{movie.name}}</h4>
+          <h4 v-if="movie.title">{{movie.title}}</h4>
+          <p>{{truncate(movie.overview,150)}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +35,9 @@ export default {
       const request = await axios.get(this.fetchUrl);
       this.movies = request.data.results;
       return request;
+    },
+    truncate(str, n) {
+      return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
   },
   computed: {}
@@ -64,24 +69,54 @@ export default {
 
 .row_poster {
   object-fit: contain;
-  width: 100%;
-  max-height: 126px;
+  height: 100%;
+}
+
+.wrap {
+  display: inline-block;
+  position: relative;
+  height: 126px;
+  width: fit-content;
   margin: 0 1px;
   cursor: pointer;
-  transition: 500ms;
+  transition: height 500ms;
 }
 
-.row_poster:hover {
-  max-height: 187px;
+.wrap:hover {
+  height: 187px;
 }
 
-/* .test {
-  color: transparent;
-  background: #ffffff86;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  text-shadow: 0px 3px 3px rgba(122, 122, 122, 0.39);
-  font-family: 'Permanent Marker', cursive;
-} */
+.poster_title {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  color: #f0f0f0;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  font-family: "Permanent Marker", cursive;
+  opacity: 1;
+  transition: opacity 2000ms 1500ms;
+}
+.wrap:hover .poster_title {
+  opacity: 0;
+  transition: opacity 100ms;
+}
+
+.poster_info {
+  position: absolute;
+  left: 5px;
+  bottom: 50px;
+  font-weight: 300;
+  font-size: 0.75rem;
+  width: 250px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 100ms;
+}
+.wrap:hover .poster_info {
+  opacity: 1;
+  transition: opacity 2000ms;
+}
+.poster_info p {
+  padding-top: 5px;
+}
 </style>

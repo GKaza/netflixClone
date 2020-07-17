@@ -17,10 +17,10 @@
       <h5 class="banner_description">{{truncate(movie.overview, 399)}}</h5>
       <div class="banner_buttons">
         <button class="banner_button">
-          <i class="fas fa-play"></i> Play
+          <i class="fas fa-play"></i>Play
         </button>
         <button class="banner_button banner_myList_button">
-          <i class="fas fa-plus"></i> My List
+          <i class="fas fa-plus"></i>My List
         </button>
       </div>
     </div>
@@ -49,7 +49,6 @@ export default {
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)
         ];
-      console.log(this.movie);
       return request;
     },
     truncate(str, n) {
@@ -78,7 +77,7 @@ export default {
 }
 .banner_rating {
   padding-left: 13px;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   font-weight: 600;
 }
 .banner_description {
@@ -99,7 +98,8 @@ export default {
   color: #0f0f0f;
   outline: none;
   border: none;
-  font-size: 1.3rem;
+  font-weight: 600;
+  font-size: 1.25rem;
   border-radius: 0.2vw;
   padding: 0.5rem 2rem;
   margin-right: 0.8rem;
@@ -111,6 +111,9 @@ export default {
 .banner_button.banner_myList_button {
   color: #ffffff;
   background-color: rgba(133, 133, 133, 0.6);
+}
+button i {
+  padding-right: 10px;
 }
 .banner_button.banner_myList_button:hover {
   background-color: rgba(100, 100, 100, 0.6);
