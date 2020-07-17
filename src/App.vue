@@ -2,14 +2,14 @@
   <div id="app">
     <Nav />
     <Banner title="Banner" :fetchUrl="this.requests.fetchNetflixOriginals" />
-    <Row title="NETFLIX Originals" :fetchUrl="this.requests.fetchNetflixOriginals" />
-    <Row title="Trending Now" :fetchUrl="this.requests.fetchTrending" />
-    <Row title="Top Rated" :fetchUrl="this.requests.fetchTopRated" />
-    <Row title="Action Movies" :fetchUrl="this.requests.fetchActionMovies" />
-    <Row title="Comedy Movies" :fetchUrl="this.requests.fetchComedyMovies" />
-    <Row title="Thriller Movies" :fetchUrl="this.requests.fetchThrillerMovies" />
-    <Row title="Horror Movies" :fetchUrl="this.requests.fetchHorrorMovies" />
-    <Row title="Animation Movies" :fetchUrl="this.requests.fetchAnimationMovies" />
+    <Row title="NETFLIX Originals" id="0" :fetchUrl="this.requests.fetchNetflixOriginals" />
+    <Row title="Trending Now" id="1" :fetchUrl="this.requests.fetchTrending" />
+    <Row title="Top Rated" id="2" :fetchUrl="this.requests.fetchTopRated" />
+    <Row title="Action Movies" id="3" :fetchUrl="this.requests.fetchActionMovies" />
+    <Row title="Comedy Movies" id="4" :fetchUrl="this.requests.fetchComedyMovies" />
+    <Row title="Thriller Movies" id="5" :fetchUrl="this.requests.fetchThrillerMovies" />
+    <Row title="Horror Movies" id="6" :fetchUrl="this.requests.fetchHorrorMovies" />
+    <Row title="Animation Movies" id="7" :fetchUrl="this.requests.fetchAnimationMovies" />
   </div>
 </template>
 

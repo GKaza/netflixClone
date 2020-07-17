@@ -5,13 +5,11 @@
       alt="Netflix Logo"
       class="nav_logo"
     />
-
     <h5 class="nav_home">Home</h5>
     <h5 class="nav_tab">TV Shows</h5>
     <h5 class="nav_tab">Movies</h5>
     <h5 class="nav_tab">Latest</h5>
     <h5 class="nav_tab">My List</h5>
-
     <div class="nav_box">
       <div class="account_menu">
         <img
@@ -20,6 +18,28 @@
           class="nav_avatar"
         />
         <i class="fas fa-caret-down less_marg"></i>
+        <div class="dropdown_content">
+          <div class="menu_item">
+            <img
+              src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png"
+              alt="Netflix Avatar"
+              class="nav_avatar"
+            />
+            <p>Other Profile</p>
+          </div>
+          <div class="menu_item">
+            <p>Manage Profiles</p>
+          </div>
+          <div class="menu_item">
+            <p>Account</p>
+          </div>
+          <div class="menu_item">
+            <p>Help Center</p>
+          </div>
+          <div class="menu_item">
+            <p>Sign out of Netflix</p>
+          </div>
+        </div>
       </div>
       <i class="fas fa-bell fa-lg"></i>
       <i class="fas fa-gift fa-lg"></i>
@@ -57,7 +77,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .nav {
   position: fixed;
@@ -121,5 +140,42 @@ export default {
 }
 .nav_tab:hover {
   color: rgb(190, 190, 190);
+}
+.dropdown_content {
+  padding-top: 18px;
+  position: absolute;
+  right: 0px;
+  top: 50px;
+  cursor: default;
+  min-width: 180px;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20%);
+  transition: all 500ms;
+}
+.dropdown_content .menu_item {
+  float: none;
+  background-color: #0f0f0f;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+}
+.menu_item img {
+  margin-right: 8px;
+}
+.menu_item p {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+.menu_item:hover p {
+  text-decoration: underline;
+}
+.account_menu:hover .dropdown_content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0%);
 }
 </style>

@@ -12,6 +12,13 @@
           <p>{{truncate(movie.overview,150)}}</p>
         </div>
       </div>
+      <div class="space"></div>
+      <div class="left_arrow scroll_button" v-if="left_value" @click="scrollLeft()">
+        <i class="fas fa-angle-left fa-lg"></i>
+      </div>
+      <div class="right_arrow scroll_button" @click="scrollRight()">
+        <i class="fas fa-angle-right fa-lg"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -20,16 +27,18 @@
 import axios from "../axios";
 export default {
   name: "Row",
-  props: ["title", "fetchUrl"],
+  props: ["title", "fetchUrl", "id"],
   data() {
     return {
       movies: null,
-      base_url: "https://image.tmdb.org/t/p/original/"
+      base_url: "https://image.tmdb.org/t/p/original/",
+      left_value: 0
     };
   },
   created: function() {
     this.fetchData();
   },
+  mounted: function() {},
   methods: {
     async fetchData() {
       const request = await axios.get(this.fetchUrl);
@@ -38,6 +47,24 @@ export default {
     },
     truncate(str, n) {
       return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    },
+    scrollLeft() {
+      let x = document.getElementsByClassName("row_posters")[this.id];
+      x.scrollLeft -= 700;
+      this.getVal();
+    },
+    scrollRight() {
+      let x = document.getElementsByClassName("row_posters")[this.id];
+      x.scrollLeft += 700;
+      this.getVal();
+    },
+    getVal() {
+      setTimeout(() => {
+        let x = document.getElementsByClassName("row_posters")[this.id]
+          .scrollLeft;
+        this.left_value = x;
+        console.log(this.left_value);
+      }, 550);
     }
   },
   computed: {}
@@ -61,6 +88,8 @@ export default {
   overflow-y: hidden;
   overflow-x: scroll;
   min-height: 215px;
+  transition: 500ms;
+  scroll-behavior: smooth;
 }
 
 .row_posters::-webkit-scrollbar {
@@ -87,14 +116,14 @@ export default {
 }
 
 .poster_title {
+  font-family: "Cinzel", serif;
   position: absolute;
   left: 20px;
   bottom: 20px;
   color: #f0f0f0;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  font-family: "Permanent Marker", cursive;
   opacity: 1;
-  transition: opacity 2000ms 1500ms;
+  transition: opacity 2000ms 1000ms;
 }
 .wrap:hover .poster_title {
   opacity: 0;
@@ -118,5 +147,43 @@ export default {
 }
 .poster_info p {
   padding-top: 5px;
+}
+.scroll_button {
+  position: absolute;
+  height: 187px;
+  width: 43px;
+  background-color: #0f0f0f4b;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.right_arrow {
+  right: 60px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(20%);
+  transition: all 500ms;
+}
+.left_arrow {
+  left: 60px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-20%);
+  transition: all 500ms;
+}
+.row_posters:hover .right_arrow {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0%);
+}
+.row_posters:hover .left_arrow {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0%);
+}
+.space {
+  min-width: 150px;
+  height: 126px;
 }
 </style>
