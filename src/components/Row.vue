@@ -24,10 +24,9 @@
 </template>
 
 <script>
-import axios from "../axios";
 export default {
   name: "Row",
-  props: ["title", "fetchUrl", "id"],
+  props: ["title", "jsonResponse", "id"],
   data() {
     return {
       movies: null,
@@ -41,9 +40,8 @@ export default {
   mounted: function() {},
   methods: {
     async fetchData() {
-      const request = await axios.get(this.fetchUrl, { port: 9091 });
-      this.movies = request.data.results;
-      return request;
+      this.movies = this.jsonResponse.results;
+      return;
     },
     truncate(str, n) {
       return str?.length > n ? str.substr(0, n - 1) + "..." : str;

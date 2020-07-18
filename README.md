@@ -1,24 +1,5 @@
 # netflix-clone
 
-## Project setup
-```
-npm install
-```
+An application inspired by Netflix where main focus is on the front-end and attempts to come close to the design and feeling you get from the original one.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+A demo of the app can be found [here](https://netflix-clone-f18cc.web.app/).

@@ -29,10 +29,9 @@
 </template>
 
 <script>
-import axios from "../axios";
 export default {
   name: "Banner",
-  props: ["title", "fetchUrl"],
+  props: ["title", "jsonResponse"],
   data() {
     return {
       movie: null,
@@ -43,13 +42,11 @@ export default {
     this.fetchData();
   },
   methods: {
-    async fetchData() {
-      const request = await axios.get(this.fetchUrl);
-      this.movie =
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
-        ];
-      return request;
+    fetchData() {
+      this.movie = this.jsonResponse.results[
+        Math.floor(Math.random() * this.jsonResponse.results.length - 1)
+      ];
+      return;
     },
     truncate(str, n) {
       return str?.length > n ? str.substr(0, n - 1) + "..." : str;
