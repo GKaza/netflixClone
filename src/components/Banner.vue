@@ -43,10 +43,9 @@ export default {
   },
   methods: {
     fetchData() {
-      let x = null;
-      do {
-        x = Math.floor(Math.random() * (this.jsonResponse.results.length - 1));
-      } while (x == 14 || x == 15);
+      let x = Math.floor(
+        Math.random() * (this.jsonResponse.results.length - 1)
+      );
       this.movie = this.jsonResponse.results[x];
       return;
     },
