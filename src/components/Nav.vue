@@ -5,11 +5,22 @@
       alt="Netflix Logo"
       class="nav_logo"
     />
-    <h5 class="nav_tab nav_home">Home</h5>
-    <h5 class="nav_tab">TV Shows</h5>
-    <h5 class="nav_tab">Movies</h5>
-    <h5 class="nav_tab">Latest</h5>
-    <h5 class="nav_tab">My List</h5>
+
+    <div class="nav_menu">
+      <div class="toggle_button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="nav_tabs">
+        <h5 class="nav_tab nav_home">Home</h5>
+        <h5 class="nav_tab">TV Shows</h5>
+        <h5 class="nav_tab">Movies</h5>
+        <h5 class="nav_tab">Latest</h5>
+        <h5 class="nav_tab">My List</h5>
+      </div>
+    </div>
+
     <div class="nav_box">
       <div class="account_menu">
         <img
@@ -88,6 +99,11 @@ export default {
   display: flex;
   align-items: center;
   transition: 300ms;
+}
+.nav_menu {
+  height: 68px;
+  display: flex;
+  align-items: center;
 }
 
 .nav_black {
@@ -174,5 +190,78 @@ export default {
   opacity: 1;
   visibility: visible;
   transform: translateY(0%);
+}
+.nav_tabs {
+  height: 68px;
+  display: flex;
+  align-items: center;
+}
+
+.toggle_button {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.toggle_button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+@media (max-width: 780px) {
+  .nav {
+    padding: 0px 20px;
+  }
+  .toggle_button {
+    display: flex;
+  }
+  .nav_tabs {
+    padding-top: 18px;
+    min-width: 180px;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20%);
+    transition: all 500ms;
+    position: absolute;
+    top: 50px;
+    left: -10px;
+  }
+
+  .nav_menu .nav_tab {
+    float: none;
+    background-color: #0f0f0f;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+  }
+  .nav_tab:hover {
+    text-decoration: underline;
+  }
+
+  .nav_menu:hover .nav_tabs {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
+  }
+  .nav_menu:hover .bar {
+    background-color: rgb(211, 211, 211);
+  }
+  .nav_box i {
+    display: none;
+  }
+  .nav_box {
+    right: 20px;
+  }
+  .nav_logo {
+    margin-right: 20px;
+  }
 }
 </style>

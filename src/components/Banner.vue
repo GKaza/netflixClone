@@ -43,9 +43,11 @@ export default {
   },
   methods: {
     fetchData() {
-      this.movie = this.jsonResponse.results[
-        Math.floor(Math.random() * this.jsonResponse.results.length - 1)
-      ];
+      let x = null;
+      do {
+        x = Math.floor(Math.random() * (this.jsonResponse.results.length - 1));
+      } while (x == 14 || x == 15);
+      this.movie = this.jsonResponse.results[x];
       return;
     },
     truncate(str, n) {
@@ -118,5 +120,29 @@ button i {
 .banner_fadeBottom {
   height: 7.4rem;
   background-image: linear-gradient(180deg, transparent, #0f0f0f85, #0f0f0f);
+}
+
+@media (max-width: 780px) {
+  .banner_contents {
+    margin: 0px 20px;
+  }
+  .banner_button {
+    font-size: 0.8rem;
+  }
+  .banner_description {
+    max-width: 100%;
+    font-size: 0.75rem;
+  }
+  .banner_title {
+    font-size: 1.5rem;
+    padding-bottom: 0.1rem;
+  }
+  .banner_rating {
+    font-size: 0.8rem;
+    padding-left: 0px;
+  }
+  .banner {
+    background-position: center;
+  }
 }
 </style>

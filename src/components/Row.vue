@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <h3 class="row_title">{{title}}</h3>
-    <div class="row_posters">
+    <div class="row_posters" @scroll="getVal()">
       <div class="wrap" v-for="movie in movies" :key="movie.id">
         <img :src="base_url + movie.backdrop_path" :alt="movie.name" class="row_poster" />
         <h5 class="poster_title" v-if="movie.name">{{movie.name}}</h5>
@@ -16,7 +16,7 @@
       <div class="left_arrow scroll_button" v-if="left_value" @click="scrollLeft()">
         <i class="fas fa-angle-left fa-lg"></i>
       </div>
-      <div class="right_arrow scroll_button" @click="scrollRight()">
+      <div class="right_arrow scroll_button" v-if="right_value > 2" @click="scrollRight()">
         <i class="fas fa-angle-right fa-lg"></i>
       </div>
     </div>
@@ -31,7 +31,8 @@ export default {
     return {
       movies: null,
       base_url: "https://image.tmdb.org/t/p/original/",
-      left_value: 0
+      left_value: 0,
+      right_value: 3
     };
   },
   created: function() {
@@ -50,20 +51,18 @@ export default {
       let x = document.getElementsByClassName("row_posters")[this.id];
       let step = window.outerWidth / 2;
       x.scrollLeft -= step;
-      this.getVal();
     },
     scrollRight() {
       let x = document.getElementsByClassName("row_posters")[this.id];
       let step = window.outerWidth / 2;
       x.scrollLeft += step;
-      this.getVal();
-      console.log(step);
     },
     getVal() {
       setTimeout(() => {
-        let x = document.getElementsByClassName("row_posters")[this.id]
-          .scrollLeft;
-        this.left_value = x;
+        let x = document.getElementsByClassName("row_posters")[this.id];
+        this.left_value = x.scrollLeft;
+        this.right_value = x.scrollWidth - (x.scrollLeft + x.clientWidth) + 1;
+        console.log(this.right_value);
       }, 550);
     }
   },
@@ -104,7 +103,7 @@ export default {
 .wrap {
   display: inline-block;
   position: relative;
-  height: 126px;
+  height: 100px;
   width: fit-content;
   margin: 0 1px;
   cursor: pointer;
@@ -183,7 +182,22 @@ export default {
   transform: translateX(0%);
 }
 .space {
-  min-width: 150px;
+  min-width: 155px;
   height: 126px;
+}
+
+@media (max-width: 780px) {
+  .row {
+    margin: 0px 0px;
+  }
+  .scroll_button {
+    display: none;
+  }
+  .space {
+    display: none;
+  }
+  .row_title {
+    margin-left: 20px;
+  }
 }
 </style>
