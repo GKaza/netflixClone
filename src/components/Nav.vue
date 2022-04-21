@@ -1,5 +1,5 @@
 <template>
-  <div class="nav" :class="{nav_black: show}">
+  <div class="nav" :class="{ nav_black: show }">
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1024px-Netflix_2015_logo.svg.png"
       alt="Netflix Logo"
@@ -24,7 +24,7 @@
     <div class="nav_box">
       <div class="account_menu">
         <img
-          src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png"
+          src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/64623a33850498.56ba69ac2a6f7.png"
           alt="Netflix Avatar"
           class="nav_avatar"
         />
@@ -61,19 +61,19 @@
 
 <script>
 export default {
-  name: "Nav",
+  name: 'Nav',
   props: [],
   data() {
     return {
-      show: false
+      show: false,
     };
   },
   created() {},
   mounted: function() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
   },
   destroyed: function() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     handleScroll: function() {
@@ -82,9 +82,9 @@ export default {
       } else {
         this.show = false;
       }
-    }
+    },
   },
-  computed: {}
+  computed: {},
 };
 </script>
 
